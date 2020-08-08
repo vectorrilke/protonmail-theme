@@ -2,125 +2,132 @@
  * Conversation list
  */
 
- // Sidebar shadow
+// Sidebar shadow
 .items-column-list,
 .conversation-list-rows,
 .elementList-container-row,
 .view-column-detail,
 .conversation {
-	box-shadow: 2px 0px 2px -2px #7b7979 inset;
+    box-shadow: 2px 0px 2px -2px #7b7979 inset;
 }
 
 .items-column-list {
-	border-right: none;
+    border-right: none;
 }
 
-
-.conversation:not(.read) .senders, 
-.conversation:not(.read) .subject-num-message, 
-.conversation:not(.read) .subject-text, 
+.conversation:not(.read) .senders,
+.conversation:not(.read) .subject-num-message,
+.conversation:not(.read) .subject-text,
 .conversation:not(.read) .time {
-	font-weight: 500;
+    font-weight: 500;
 }
 
 .conversation {
-
-	background: var(--conversation-bg-read,#F7F6F6);
-
-	// Unread conversation
-	&:not(.active):not(.read) {
-		background: var(--conversation-bg-unread,#FFF);
-	}
-
-	&.active {
-		background: var(--conversation-bg-active,#dadef3);
-	}
-
-	// Icon
-	.item-icon {
-		font-weight: 200;
-	}
-
-	.folderConversations-container svg {
-		fill: var(--conversation-icon-color, var(--header-bg-1, #6B3ABB));
-	}
-
-	// Sender
-	.senders {
-		color: #000;
-		font-weight: 400;
-		font-size: var(--message-font-size, 1.2rem);
-	}
-
-	// Subject
-	.flex-item-fluid.flex.mauto {
-		color: #444;
-		font-weight: 200;
-		font-size: var(--message-font-size, 1.2rem);
-	}
-
-	// Badges
-	[class*="badgeLabel"] {
-		text-transform: none;
-	}
-
-	// Time
-	time {
-		color: var(--conversation-icon-color, #e14179);
-		font-size: var(--message-font-size, 1.2rem);
-		font-weight: 200;
-		color: #777;
-		//opacity: .8;
-		transition: all .2s ease;
-
-		//&:hover & {
-		//	opacity: 1;
-		//}
-	}
-
-
-	// Size
-	@if $hide-message-size {	
-		.mtauto.mbauto.mr1.ml1.ng-binding {
-			opacity: 0;
-			transition: all .2s ease;
-			font-size: 1.2rem;
-		}
-	}
-
-	// Star	
-	.singleStar {
-		opacity: 0;
-		transition: all .2s ease;
-	}
-
-
-	// Nombre de messages
-	.subject-num-message.mr0-25.flex-item-noshrink.ng-binding.ng-scope {
-		order: 10;
-		margin-left: .5rem;
-		font-weight: 400;
-	}
-
-	// Attachment
-	.mtauto.mbauto.conversation-icon-attachment.ml0-5.icon-16p.fill-global-grey{
-		fill: var(--attachment-icon-color, #dc85a3);
-	}
-
-	&:hover {
-
-		// Size
-		.mtauto.mbauto.mr1.ml1.ng-binding {
-			opacity: 1;
-		}
-
-		// Star
-		.singleStar {
-			opacity: 1;
-		}
-
-	}
-
+    background: var(--conversation-bg-read, #F7F6F6);
+    // Unread conversation
+    &:not(.active):not(.read) {
+        background: var(--conversation-bg-unread, #FFF);
+    }
+    &.active {
+        background: var(--conversation-bg-active, #dadef3);
+    }
+    // Icon
+    .item-icon {
+        font-weight: 200;
+    }
+    .folderConversations-container svg {
+        fill: var(--conversation-icon-color, var(--header-bg-1, #6B3ABB));
+    }
+    // Sender
+    .senders {
+        color: #000;
+        font-weight: 400;
+        font-size: var(--message-font-size, 1.2rem);
+    }
+    // Subject
+    .flex-item-fluid.flex.mauto {
+        color: #444;
+        font-weight: 200;
+        font-size: var(--message-font-size, 1.2rem);
+    }
+    // Badges
+    [class*="badgeLabel"] {
+        text-transform: none;
+    }
+    // Labels tweaks
+    .pm_labels [class*="-label"] {
+        border-radius: .3em;
+    }
+    // -----------------------------------------------------------------------------------------------------------------
+    @if $show-all-labels {
+        .pm_labels [class*="-label"] {
+            display: flex;
+            background: inherit;
+            background-color: inherit;
+            align-items: center;
+            margin-left: .25em;
+            border-radius: 0.3em;
+            border: 2px solid;
+            background-color: currentColor;
+            transition: none;
+            max-height: 100%;
+            max-width: 15em;
+            flex-wrap: nowrap;
+        }
+        .pm_labels[data-format="stack"] [class*="-label"]:not(:first-of-type) {
+            max-width: 15em;
+            width: 100%;
+            padding: 0 auto auto auto;
+            overflow: visible;
+            border-left-width: 2px;
+            border-radius: .25rem;
+            background-color: currentColor;
+            align-self: center;
+        }
+    }
+    // Time
+    time {
+        color: var(--conversation-icon-color, #e14179);
+        font-size: var(--message-font-size, 1.2rem);
+        font-weight: 200;
+        color: #777;
+        //opacity: .8;
+        transition: all .2s ease;
+        //&:hover & {
+        //	opacity: 1;
+        //}
+    }
+    // Size
+    @if $hide-message-size {
+        .mtauto.mbauto.mr1.ml1.ng-binding {
+            opacity: 0;
+            transition: all .2s ease;
+            font-size: 1.2rem;
+        }
+    }
+    // Star	
+    .singleStar {
+        opacity: 0;
+        transition: all .2s ease;
+    }
+    // Nombre de messages
+    .subject-num-message.mr0-25.flex-item-noshrink.ng-binding.ng-scope {
+        order: 10;
+        margin-left: .5rem;
+        font-weight: 400;
+    }
+    // Attachment
+    .mtauto.mbauto.conversation-icon-attachment.ml0-5.icon-16p.fill-global-grey {
+        fill: var(--attachment-icon-color, #dc85a3);
+    }
+    &:hover {
+        // Size
+        .mtauto.mbauto.mr1.ml1.ng-binding {
+            opacity: 1;
+        }
+        // Star
+        .singleStar {
+            opacity: 1;
+        }
+    }
 }
-
-
